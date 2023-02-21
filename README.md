@@ -10,7 +10,7 @@
 1) Clone this repo onto local environment
 2) Change DataBase and Collections names within the code to match personal MongoDB
 
-`` javascript
+```javascript
   app.get('/update', async (req, res) => {
 
   //get data from the form 
@@ -26,4 +26,4 @@
   })
 
   })
-``
+```
