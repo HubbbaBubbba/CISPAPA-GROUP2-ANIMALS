@@ -41,3 +41,15 @@ try{
 
   })
 ```
+4) Run on `Localhost:3000`
+- test code, put in an animal, and click submit
+- Check console log for name submitted
+  - should look like:
+```diff
+$ node app.js
+in the node console
+Example app listening on port 3000
+in get to slash update: Cow
+```
+5) Check MongoDB for "Cow"
+- If Cow is in your DB, then you have succesfully C & R'd
