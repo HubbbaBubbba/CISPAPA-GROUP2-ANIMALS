@@ -11,7 +11,7 @@
 2) Change DataBase and Collections names within the code to match personal MongoDB
 
 ``javascript
-app.get('/update', async (req, res) => {
+  app.get('/update', async (req, res) => {
 
   //get data from the form 
 
@@ -23,7 +23,7 @@ app.get('/update', async (req, res) => {
   const collection = client.db("***YOURDBNAME***").collection("***YOURCOLLECTIONNAME***");
   await collection.insertOne({ 
     animal: animal_input
-})
+  })
 
-})
+  })
 ``
