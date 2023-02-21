@@ -7,7 +7,23 @@
   - Ethan is the only one with access to URI password
   - If you guys can figure out how to change that, `wonderful`:sunglasses: 
 3) Change DataBase and Collections names within the code to match personal MongoDB
-
+```javascript
+try{
+    client.connect; 
+    const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
+    // const collection = client.db("papa").collection("dev-profiles");
+    const result = await collection.find().toArray();
+    //const result = await collection.findOne(); 
+    console.log("cxnDB result: ", result);
+    return result; 
+  }
+  catch(e){
+      console.log(e)
+  }
+  finally{
+    client.close; 
+  }
+```
 ```javascript
   app.get('/update', async (req, res) => {
 
