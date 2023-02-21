@@ -10,7 +10,7 @@
 ```javascript
 try{
     client.connect; 
-    const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
+    const collection = client.db("***YOURDBNAME***").collection("***YOURCOLLECTIONNAME***");
     // const collection = client.db("papa").collection("dev-profiles");
     const result = await collection.find().toArray();
     //const result = await collection.findOne(); 
