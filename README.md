@@ -5,7 +5,7 @@
 - This will create a secret environment within the codespace
 - Once installed type `touch .env`
   - Ethan is the only one with access to URI password
-  - If you guys can figure out how to change that, `wonderful` :)
+  - If you guys can figure out how to change that, `wonderful`:sunglasses: 
 3) Change DataBase and Collections names within the code to match personal MongoDB
 
 ```javascript
