@@ -6,4 +6,6 @@
 - Ethan is the only one with access to URI password
   - If you guys can figure out how to change that, wondeful :)
 
-<h1> Connect your DB to this code <h1>
+# Connect your DB to this code
+1) Clone this repo onto local environment
+2) Change DataBase and Collections names within the code to match personal MongoDB
