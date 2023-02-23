@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { ObjectId } = require('mongodb')
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3000;  
@@ -33,26 +34,18 @@ async function cxnDB(){
 }
 
 
-app.get('/', (req, res) => {
-  //res.send('Hello World This is Barry 3! <br/> <a href="mongo">mongo</a>');
-
-  res.render('index'); 
-
-})
-
-app.get('/mongo', async (req, res) => {
-
-  // res.send("check your node console, bro");
+app.get('/', async (req, res) => {
 
   let result = await cxnDB().catch(console.error); 
 
-  console.log('in get to slash mongo', result[1].drink_name); 
+  // console.log("get/: ", result);
 
-  res.send(`here ya go, joe. ${ result[1].drink_name }` ); 
-
+  res.render('index', {  animalData : result })
 })
 
-app.get('/update', async (req, res) => {
+//CREATE
+
+app.get('/create', async (req, res) => {
 
   //get data from the form 
 
@@ -67,6 +60,79 @@ app.get('/update', async (req, res) => {
 })
 
 })
+
+//READ
+
+app.get('/mongo', async (req, res) => {
+
+  // res.send("check your node console, bro");
+
+  let result = await cxnDB().catch(console.error); 
+
+  console.log('in get to slash mongo', result[1].animal_name); 
+
+  res.send(`here ya go, joe. ${ result[1].animal_name }` ); 
+
+})
+
+//UPDATE
+
+app.post('/updateAnimal/:id', async (req, res) => {
+
+  try {
+    console.log("req.parms.id: ", req.params.id) 
+    
+    client.connect; 
+    const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
+    let result = await collection.findOneAndUpdate(
+      {
+        "_id": new ObjectId(req.params.id),
+        // $set: { "animal" : "NewAnimal"}
+        "animal": "NewAnimal",
+
+
+
+      }
+      
+    )
+    .then(result => {
+      console.log(result); 
+      res.redirect('/');
+    })
+    .catch(error => console.error(error))
+  }
+  finally{
+    //client.close()
+  }
+
+})
+
+// DELETE
+
+app.post('/deleteAnimal/:id', async (req, res) => {
+
+  try {
+    console.log("req.parms.id: ", req.params.id) 
+    
+    client.connect; 
+    const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
+    let result = await collection.findOneAndDelete( 
+      {
+        "_id": ObjectId(req.params.id)
+      }
+    )
+    .then(result => {
+      console.log(result); 
+      res.redirect('/');
+    })
+    .catch(error => console.error(error))
+  }
+  finally{
+    //client.close()
+  }
+
+})
+
 
 console.log('in the node console');
 

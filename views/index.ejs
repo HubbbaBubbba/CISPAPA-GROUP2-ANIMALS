@@ -1,7 +1,23 @@
+<h3> Current Animal on hand</h3> 
+ <% for (var i=0; i< animalData.length; i++ ) { %>
+  <form method="POST" action="/deleteAnimal/<%= animalData[i]._id %>" style="display: inline-block">  
+    <%= animalData[i].animal %> (<%= animalData[i].size %>) 
+    <input type="submit" value="delete"> 
+  </form>
+  <br/>
+<% } %> 
 
+<h3> Update a animal</h3> 
+ <% for (var i=0; i< animalData.length; i++ ) { %>
+  <form method="POST" action="/updateAnimal/<%= animalData[i]._id %>" style="display: inline-block">  
+    <%= animalData[i].animal %> (<%= animalData[i].size %>) 
+    <input type="submit" value="update"> 
+  </form>
+  <br/>
+<% } %> 
 <!-- update our db -->
 
-<form method="get" action="/update">
+<form method="get" action="/create">
     <p>Give an animal name</p>
     <input type="text" name="ejsFormName" value=""> 
     <input type="submit">
