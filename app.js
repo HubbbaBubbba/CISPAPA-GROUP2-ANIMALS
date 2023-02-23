@@ -85,16 +85,7 @@ app.post('/updateAnimal/:id', async (req, res) => {
     client.connect; 
     const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
     let result = await collection.findOneAndUpdate(
-      {
-        "_id": new ObjectId(req.params.id),
-        // $set: { "animal" : "NewAnimal"}
-        "animal": "NewAnimal",
-
-
-
-      }
-      
-    )
+      {"_id": new ObjectId(req.params.id)}, {$set:{animal : "NewAnimal"}})
     .then(result => {
       console.log(result); 
       res.redirect('/');
@@ -117,10 +108,8 @@ app.post('/deleteAnimal/:id', async (req, res) => {
     client.connect; 
     const collection = client.db("CIS486POWERTRAIN").collection("animal_name");
     let result = await collection.findOneAndDelete( 
-      {
-        "_id": ObjectId(req.params.id)
-      }
-    )
+      {"_id": new ObjectId(req.params.id)}, {$set:{animal : ""}})
+    
     .then(result => {
       console.log(result); 
       res.redirect('/');
